@@ -42,6 +42,7 @@ const Header = (props: Props) => {
 
 const styles = StyleSheet.create({
   headerDiv: {
+    width: "100%",
     flex: 1, 
     flexDirection: "row", 
     justifyContent: "space-between", 
@@ -50,7 +51,9 @@ const styles = StyleSheet.create({
   headerButtonDiv: {
     flex: 1, 
     flexDirection: "row", 
-    justifyContent: "space-evenly"
+    justifyContent: "flex-end", 
+    gap: "2%",
+    paddingRight: "2%",
   },
   headerButton: {
     

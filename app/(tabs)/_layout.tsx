@@ -14,39 +14,44 @@ const TabLayout = () => {
   return (
     <Tabs screenOptions={{
       tabBarShowLabel: false,
+      tabBarStyle: {
+        position: 'fixed', 
+        bottom: 0,
+      },
+
     }}>
       <Tabs.Screen 
         name='index' 
         options={{ 
-          headerTitle: () => <Header pageTitle={"Home"} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/>, 
+          header: () => <Header pageTitle={"Home"} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/>, 
           tabBarIcon: ({color, focused}) => <HomeSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
         }} 
       />
       <Tabs.Screen 
         name='locationsearch' 
         options={{ 
-          headerTitle: () => <Header pageTitle={"Locations"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          header: () => <Header pageTitle={"Locations"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
           tabBarIcon: ({color, focused}) => <CompassSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
         }} 
       />
       <Tabs.Screen 
         name='favorites' 
         options={{ 
-          headerTitle: () => <Header pageTitle={"Favorites"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          header: () => <Header pageTitle={"Favorites"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
           tabBarIcon: ({color, focused}) => <HeartSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
         }} 
       />
       <Tabs.Screen 
         name='recents' 
         options={{ 
-          headerTitle: () => <Header pageTitle={"Recents"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>,
+          header: () => <Header pageTitle={"Recents"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>,
           tabBarIcon: ({color, focused}) => <CalendarSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
         }} 
       />
       <Tabs.Screen 
         name='settings' 
         options={{ 
-          headerTitle: () => <Header pageTitle={"Settings"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          header: () => <Header pageTitle={"Settings"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
           tabBarIcon: ({color, focused}) => <PersonSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
         }} 
       />
