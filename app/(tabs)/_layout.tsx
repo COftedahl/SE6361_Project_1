@@ -1,45 +1,57 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import Header from '../../components/FigmaRendering/TabComponents/Header';
+import HomeSVGIcon from '@/components/FigmaRendering/svg/Home';
+import CompassSVGIcon from '@/components/FigmaRendering/svg/Compass';
+import HeartSVGIcon from '@/components/FigmaRendering/svg/Heart';
+import CalendarSVGIcon from '@/components/FigmaRendering/svg/Calendar';
+import PersonSVGIcon from '@/components/FigmaRendering/svg/Person';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout = () => {
+  
+  const activeTabBackground: string = "rgb(0,0,0)";
+  const inactiveTabBackground: string = "rgba(255,255,255,0)";
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+    <Tabs screenOptions={{
+      tabBarShowLabel: false,
+    }}>
+      <Tabs.Screen 
+        name='index' 
+        options={{ 
+          headerTitle: () => <Header pageTitle={"Home"} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/>, 
+          tabBarIcon: ({color, focused}) => <HomeSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
+        }} 
       />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+      <Tabs.Screen 
+        name='locationsearch' 
+        options={{ 
+          headerTitle: () => <Header pageTitle={"Locations"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          tabBarIcon: ({color, focused}) => <CompassSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
+        }} 
+      />
+      <Tabs.Screen 
+        name='favorites' 
+        options={{ 
+          headerTitle: () => <Header pageTitle={"Favorites"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          tabBarIcon: ({color, focused}) => <HeartSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
+        }} 
+      />
+      <Tabs.Screen 
+        name='recents' 
+        options={{ 
+          headerTitle: () => <Header pageTitle={"Recents"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>,
+          tabBarIcon: ({color, focused}) => <CalendarSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
+        }} 
+      />
+      <Tabs.Screen 
+        name='settings' 
+        options={{ 
+          headerTitle: () => <Header pageTitle={"Settings"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+          tabBarIcon: ({color, focused}) => <PersonSVGIcon backgroundColor={focused ? activeTabBackground : inactiveTabBackground }/>, 
+        }} 
       />
     </Tabs>
-  );
+  )
 }
+
+export default TabLayout;
