@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0, 
     bottom: 38,
+    width: "100%",
   },
   allTabScreensContainerStyle: {
     backgroundColor: Colors.white, 
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.white, 
 
     height: "100%",
-    overflow: "scroll",
+    overflowY: "scroll",
+    overflowX: "hidden",
   }, 
   allTabScreensStyle: {
     height: "100%",

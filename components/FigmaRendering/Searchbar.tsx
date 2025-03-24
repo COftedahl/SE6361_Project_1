@@ -18,13 +18,22 @@ const Searchbar = (props: Props) => {
       style={
         {
           paddingHorizontal: props.margin ?? 0, 
-          top: 0,
           position: (props.sticky ? "sticky" : "static"),
+          top: 0, 
           zIndex: 1,
           backgroundColor: (props.transparentBackground ? Colors.transparent : Colors.white),
         }
       }
     >
+      <ThemedView 
+        style={
+          [
+            styles.gapHiderDivStyle, 
+            {
+              borderColor: (props.transparentBackground ? Colors.transparent : Colors.white),
+            }
+          ]
+        } />
       <ThemedView style={styles.inputBarStyle}>
         <MagnifyingGlassSVGIcon width={20} height={20}/>
         <MicrophoneSVGIcon width={20} height={20}/>
@@ -34,7 +43,17 @@ const Searchbar = (props: Props) => {
   )
 }
 
+const TOP_BACKGROUND_OBSCURING_ZONE_SIZE = 5;
+
 const styles = StyleSheet.create({
+  gapHiderDivStyle: {
+    width: "100%",
+    borderWidth: 0,
+    borderTopWidth: TOP_BACKGROUND_OBSCURING_ZONE_SIZE,
+    top: -TOP_BACKGROUND_OBSCURING_ZONE_SIZE,
+    boxSizing: "content-box", 
+    position: "absolute", 
+  },
   inputBarStyle: {
     width: "100%",
     padding: 5,
@@ -51,7 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   }, 
   textInputStyle: {
-    
+    width: "100%", 
   }
 })
 

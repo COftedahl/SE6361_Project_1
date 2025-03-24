@@ -1,14 +1,12 @@
-import { ThemedText } from "@/components/FigmaRendering/ThemedText";
 import { ThemedView } from "@/components/FigmaRendering/ThemedView";
-import Location from "@/components/FigmaRendering/Location";
 import { Colors } from '../../constants/Colors';
 import TitleLink from "@/components/FigmaRendering/TitleLink";
 import TabLayoutManager from "@/components/FigmaRendering/TabComponents/TabLayoutManager";
 import { StyleSheet } from 'react-native';
-import SampleHorizontalScroller from "@/components/FigmaRendering/SampleHorizontalScroller";
-import SampleHorizontalScrollerSnapped from "@/components/FigmaRendering/SampleHorizontalScrollerSnapped";
 import Searchbar from "@/components/FigmaRendering/Searchbar";
 import { sectionHorizontalPadding } from "@/constants/Styles";
+import LinkedLocation from "@/components/FigmaRendering/LinkedLocation";
+import { ROUTE_DESTINATION } from "@/constants/Functionality";
 
 const HomeTab = () => {
   return (
@@ -19,18 +17,17 @@ const HomeTab = () => {
     }}>
 
       <ThemedView>
-        {/* <ThemedText>You found the home screen! </ThemedText> */}
-        <Searchbar placeholder="Hello" margin={sectionHorizontalPadding} sticky={false} transparentBackground={false} />
-        <Location name={"Recent Location"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"}/>
+        <Searchbar placeholder={"Search"} value={""} margin={sectionHorizontalPadding} sticky={true} transparentBackground={false} />
+        <LinkedLocation name={"Recent Location"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION} />
         <TitleLink title={"Favorites"} destination={"./favorites"} />
         <ThemedView style={styles.centeredRow}>
           <ThemedView style={styles.favoriteLocationsDiv}>
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.golden} textLocation={"OUTSIDE"} />
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.green} textLocation={"OUTSIDE"} />
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.red} textLocation={"OUTSIDE"} />
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.orange} textLocation={"OUTSIDE"} />
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.green} textLocation={"OUTSIDE"} />
-            <Location name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.blue} textLocation={"OUTSIDE"} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.golden} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.green} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.red} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.orange} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.green} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
+            <LinkedLocation name={"Location Name"} width={150} height={150} includePlusSign={false} color={Colors.blue} textLocation={"OUTSIDE"} to={ROUTE_DESTINATION} />
           </ThemedView>
         </ThemedView>
       </ThemedView>

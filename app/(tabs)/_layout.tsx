@@ -52,7 +52,7 @@ const TabLayout = () => {
         <Tabs.Screen 
           name='locationsearch' 
           options={{ 
-            header: () => <Header pageTitle={"Locations"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+            header: () => <Header pageTitle={"Location Search"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
             tabBarIcon: ({color, focused}) => <CompassSVGIcon {...GetSVGIconProps({color, focused})} />, 
           }} 
         />

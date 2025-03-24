@@ -4,8 +4,9 @@ import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
 import { DimensionValue, StyleSheet } from 'react-native';
 import { sectionHorizontalPadding, standardBorderRadius } from "@/constants/Styles";
+import { Colors } from "@/constants/Colors";
 
-interface Props {
+export interface LocationProps {
   name: string, 
   width: "FULL" | DimensionValue, 
   height?: DimensionValue | undefined, 
@@ -18,7 +19,7 @@ const DEFAULT_BORDER_RADIUS = standardBorderRadius;
 const DEFAULT_MARGIN = sectionHorizontalPadding;
 const DEFAULT_PADDING = 10;
 
-const Location = (props: Props) => {
+const Location = (props: LocationProps) => {
 
   const DEFAULT_HEIGHT = 80;
   const INNER_TEXT_STYLE = {
@@ -107,6 +108,7 @@ const Location = (props: Props) => {
 const styles = StyleSheet.create({
   wrapperStyle: {
     padding: DEFAULT_MARGIN, 
+    backgroundColor: Colors.transparent,
   },
   viewStyles: {
     borderRadius: DEFAULT_BORDER_RADIUS,
