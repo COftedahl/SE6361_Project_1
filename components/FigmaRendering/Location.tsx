@@ -3,6 +3,7 @@ import SpeakerSVGIcon from "./svg/Speaker";
 import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
 import { DimensionValue, StyleSheet } from 'react-native';
+import { sectionHorizontalPadding, standardBorderRadius } from "@/constants/Styles";
 
 interface Props {
   name: string, 
@@ -13,8 +14,8 @@ interface Props {
   textLocation: "INSIDE" | "OUTSIDE", 
 }
 
-const DEFAULT_BORDER_RADIUS = 5;
-const DEFAULT_MARGIN = 12;
+const DEFAULT_BORDER_RADIUS = standardBorderRadius;
+const DEFAULT_MARGIN = sectionHorizontalPadding;
 const DEFAULT_PADDING = 10;
 
 const Location = (props: Props) => {

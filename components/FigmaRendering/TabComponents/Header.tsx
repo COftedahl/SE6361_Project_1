@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     flexDirection: "row", 
     justifyContent: "space-between", 
     alignItems: "flex-end",
+    paddingBottom: 4,
+    borderBottomColor: Colors.lightgrey,
+    borderBottomWidth: 1, 
+    borderStyle: "solid", 
   }, 
   headerButtonDiv: {
     flex: 1, 

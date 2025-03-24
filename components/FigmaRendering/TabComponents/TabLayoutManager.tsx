@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import Header from "./Header";
+import { Colors } from "@/constants/Colors";
 
 interface Props {
   pageTitle: string, 
@@ -34,7 +35,11 @@ const styles = StyleSheet.create({
     bottom: 38,
   },
   allTabScreensContainerStyle: {
-    padding: 10,
+    backgroundColor: Colors.white, 
+    // padding: 10,
+    borderWidth: 10, 
+    borderColor: Colors.white, 
+
     height: "100%",
     overflow: "scroll",
   }, 

@@ -1,1 +1,2 @@
-export const standardBorderRadius = 8;
+export const standardBorderRadius = 5;
+export const sectionHorizontalPadding = 12;

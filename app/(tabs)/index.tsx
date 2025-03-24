@@ -6,6 +6,9 @@ import TitleLink from "@/components/FigmaRendering/TitleLink";
 import TabLayoutManager from "@/components/FigmaRendering/TabComponents/TabLayoutManager";
 import { StyleSheet } from 'react-native';
 import SampleHorizontalScroller from "@/components/FigmaRendering/SampleHorizontalScroller";
+import SampleHorizontalScrollerSnapped from "@/components/FigmaRendering/SampleHorizontalScrollerSnapped";
+import Searchbar from "@/components/FigmaRendering/Searchbar";
+import { sectionHorizontalPadding } from "@/constants/Styles";
 
 const HomeTab = () => {
   return (
@@ -16,7 +19,8 @@ const HomeTab = () => {
     }}>
 
       <ThemedView>
-        <ThemedText>You found the home screen! </ThemedText>
+        {/* <ThemedText>You found the home screen! </ThemedText> */}
+        <Searchbar placeholder="Hello" margin={sectionHorizontalPadding} sticky={false} transparentBackground={false} />
         <Location name={"Recent Location"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"}/>
         <TitleLink title={"Favorites"} destination={"./favorites"} />
         <ThemedView style={styles.centeredRow}>

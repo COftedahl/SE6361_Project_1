@@ -31,4 +31,7 @@ export const Colors = {
   orange: "#FF9500",
   grey: "#757575",
   lightgrey: "#BBBBBB",
+  white: "#FFFFFF", 
+  palegrey: "#F5F5F5",
+  transparent: "#00000000",
 };
