@@ -4,6 +4,8 @@ import { ThemedText } from "../ThemedText";
 import CameraSVGIcon from "../svg/Camera";
 import SpeakerSVGIcon from "../svg/Speaker";
 import StrideSVGIcon from "../svg/Stride";
+import { standardBorderRadius } from "@/constants/Styles";
+import { Colors } from "@/constants/Colors";
 
 interface Props {
   pageTitle: string, 
@@ -43,7 +45,6 @@ const Header = (props: Props) => {
 const styles = StyleSheet.create({
   headerDiv: {
     width: "100%",
-    flex: 1, 
     flexDirection: "row", 
     justifyContent: "space-between", 
     alignItems: "flex-end",
@@ -56,7 +57,10 @@ const styles = StyleSheet.create({
     paddingRight: "2%",
   },
   headerButton: {
-    
+    borderBottomLeftRadius: standardBorderRadius, 
+    borderColor: Colors.black, 
+    borderWidth: 1, 
+    borderStyle: "solid",
   }, 
   headerButton_Stride: {
     backgroundColor: "#34C759",
