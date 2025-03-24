@@ -30,11 +30,10 @@ const GreyBar = (props: Props) => {
             height: props.height ?? 30, 
             backgroundColor: (props.transparentBackground ? Colors.transparent : Colors.white),
           }, 
-          props.style, 
         ]
       }
     >
-      <ThemedView style={styles.greyBarStyle}>
+      <ThemedView style={[styles.greyBarStyle, {...props.style}]}>
         {props.children}
       </ThemedView>
     </ThemedView>

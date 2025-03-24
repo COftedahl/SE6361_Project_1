@@ -2,9 +2,11 @@ import { BaseFontSize, BaseFontWeight } from "@/constants/Font";
 import SpeakerSVGIcon from "./svg/Speaker";
 import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
-import { DimensionValue, StyleSheet } from 'react-native';
+import { DimensionValue, Pressable, StyleSheet } from 'react-native';
 import { sectionHorizontalPadding, standardBorderRadius } from "@/constants/Styles";
 import { Colors } from "@/constants/Colors";
+import PlusSVGIcon from "./svg/Plus";
+import { useRouter } from "expo-router";
 
 export interface LocationProps {
   name: string, 
@@ -21,7 +23,9 @@ const DEFAULT_PADDING = 10;
 
 const Location = (props: LocationProps) => {
 
-  const DEFAULT_HEIGHT = 80;
+  const DEFAULT_HEIGHT = (((props.textLocation === "INSIDE") && props.includePlusSign) ? 110 : 80);
+  const PLUS_SIGN_LINK_DESTINATION = "/(tabs)";
+  const router = useRouter();
   const INNER_TEXT_STYLE = {
     fontSize: 2 * BaseFontSize,
     fontWeight: 600 as any, 
@@ -36,6 +40,12 @@ const Location = (props: LocationProps) => {
     letterSpacing: 0.5,//adds on letter spacing
     flexBasis: "0",
     lineHeight: 20,
+  }
+
+  const handlePlusSignClicked = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.navigate(PLUS_SIGN_LINK_DESTINATION);
   }
 
   return (
@@ -55,6 +65,7 @@ const Location = (props: LocationProps) => {
               height: props.height ?? DEFAULT_HEIGHT,
               width: ( props.width == "FULL" ? "100%" : props.width), 
               backgroundColor: props.color, 
+
             }, 
             
           ]
@@ -73,8 +84,25 @@ const Location = (props: LocationProps) => {
             >
               {props.name}
             </ThemedText>
-            <ThemedView style={styles.rightDivStyles}>
-              <SpeakerSVGIcon width={50} height={40} viewBoxScale={0.8}/>
+            <ThemedView 
+              style={
+                [
+                  styles.rightDivStyles, 
+                  {
+                    justifyContent: (props.includePlusSign ? "space-between" : "flex-end"),
+                  }
+                ]
+              }
+            >
+              {props.includePlusSign 
+              ? 
+              <Pressable onPress={handlePlusSignClicked}>
+                <PlusSVGIcon width={40} height={40} strokeWidth={"8"}/>
+              </Pressable>
+              :
+                <></>
+              }
+              <SpeakerSVGIcon width={40} height={40} viewBoxScale={0.8}/>
             </ThemedView>
           </>
         :
@@ -123,7 +151,6 @@ const styles = StyleSheet.create({
   rightDivStyles: {
     flexGrow: 1,
     flexDirection: "column", 
-    justifyContent: "flex-end",
     alignItems: "flex-end",
     backgroundColor: "none",
   }, 

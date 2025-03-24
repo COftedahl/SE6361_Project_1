@@ -19,24 +19,24 @@ const FavoritesTab = () => {
     }}>
       <ThemedView>
         <Searchbar placeholder={"Search"} value={""} margin={sectionHorizontalPadding} sticky={true} transparentBackground={false} />
-        <GreyBar marginTop={12} style={{display: "flex", flexDirection: "row", justifyContent: "space-between"} as any}>
+        <GreyBar marginTop={12} style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", } as any}>
           <>
             <ThemedText>
               Add New Route
             </ThemedText>
-            <PlusSVGIcon width={30} height={30} strokeWidth={"8"}/>
+            <PlusSVGIcon width={20} height={20} strokeWidth={"8"}/>
           </>
         </GreyBar>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.green} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.red} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.lightgrey} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
-        <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.green} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.green} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.red} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.lightgrey} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
+        <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.green} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
       </ThemedView>
     </TabLayoutManager>
   )
