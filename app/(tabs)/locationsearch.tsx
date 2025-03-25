@@ -10,6 +10,7 @@ import RNPickerSelect from 'react-native-picker-select';
 // import { Picker } from '@react-native-picker/picker';
 import DownArrow from "@/components/FigmaRendering/svg/Arrows/DownArrow";
 import Picker from "react-native-picker-select";
+import Select from "@/components/FigmaRendering/Select";
 
 const LocationSearchTab = () => {
   return (
@@ -21,20 +22,33 @@ const LocationSearchTab = () => {
 
       <ThemedView>
         <Searchbar placeholder={"Search"} value={""} margin={sectionHorizontalPadding} sticky={true} transparentBackground={false} />
-        <ThemedView style={{position: "relative", width: "fit-content" as any }}>
-          <Picker 
-            placeholder={{label: "Filter", value: "", color: Colors.lightgrey}}
+        <ThemedView style={styles.sectionStyle}>
+          <Select 
+            onValueChange={(e) =>{console.log(e)} } 
+            placeholder={{value: "", label: "Filter", color: Colors.lightgrey}}
             value={""}
-            onValueChange={(e) => console.log(e)}
-            items={[
-              {label: "", value: ""},
-              {label: "a", value: "a"}
-            ]}
-            Icon={() => <DownArrow/>}
-            style={styles.selectStyles}
-          >
-          </Picker>
+            items={
+              [
+                {label: "First item", value: "1"},
+                {label: "Second item", value: "2"},
+              ]
+            }
+            margin={5}
+          />
+          <Select 
+            onValueChange={(e) =>{console.log(e)} } 
+            placeholder={{value: "", label: "Sort", color: Colors.lightgrey}}
+            value={""}
+            items={
+              [
+                {label: "First item", value: "1"},
+                {label: "Second item", value: "2"},
+              ]
+            }
+            margin={5}
+          />
         </ThemedView>
+        
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
@@ -51,36 +65,13 @@ const LocationSearchTab = () => {
 }
 
 const styles=StyleSheet.create({
-  selectStyles: {
-    inputIOS: {
-
-    }, 
-    inputAndroid: {
-
-    }, 
-    inputWeb: {
-      alignSelf: "flex-start", 
-      width: "auto",
-      padding: 10,
-      borderColor: Colors.lightgrey, 
-      borderWidth: 1, 
-      borderStyle: "solid", 
-      borderRadius: standardBorderRadius, 
-      backgroundColor: Colors.white,
-      // position: "relative", 
-      // backgroundImage: "none",
-      MozAppearance: "none",
-      WebkitAppearance: "none",
-      appearance: "none",
-      paddingRight: 50,
-    }, 
-    iconContainer: {
-      right: 0,
-      top: "10%",
-      // backgroundColor: Colors.white,
-      // color: Colors.white,
-    }
-  } as any,
+  sectionStyle: {
+    paddingTop: sectionHorizontalPadding + 12,
+    padding: sectionHorizontalPadding,
+    paddingBottom: sectionHorizontalPadding / 2,
+    flexDirection: "row", 
+    justifyContent: "flex-start", 
+  }
 })
 
 export default LocationSearchTab;

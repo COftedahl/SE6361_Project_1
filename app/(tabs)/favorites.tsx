@@ -9,6 +9,7 @@ import LinkedLocation from "@/components/FigmaRendering/LinkedLocation";
 import { ThemedText } from "@/components/FigmaRendering/ThemedText";
 import GreyBar from "@/components/FigmaRendering/GreyBar";
 import PlusSVGIcon from "@/components/FigmaRendering/svg/Plus";
+import { Link } from "expo-router";
 
 const FavoritesTab = () => {
   return (
@@ -24,7 +25,9 @@ const FavoritesTab = () => {
             <ThemedText>
               Add New Route
             </ThemedText>
-            <PlusSVGIcon width={20} height={20} strokeWidth={"8"}/>
+            <Link href={ROUTE_DESTINATION}>
+              <PlusSVGIcon width={20} height={20} strokeWidth={"8"}/>
+            </Link>
           </>
         </GreyBar>
         <LinkedLocation name={"Favorite Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION}/>
