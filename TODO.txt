@@ -1,1 +1,2 @@
 -Add swipe interactions to pages
+-Design Idea for homepage: divide into more sections vertically, each section use a horizontal scroller to view the routes for the section

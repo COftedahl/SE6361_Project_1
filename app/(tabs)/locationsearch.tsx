@@ -14,7 +14,7 @@ import Select from "@/components/FigmaRendering/Select";
 
 const LocationSearchTab = () => {
   return (
-    <TabLayoutManager pageTitle={"Home"} headerOptions={{
+    <TabLayoutManager pageTitle={""} headerOptions={{
       displayStrideLengthButton: true,
       displayCameraButton: true,
       displayReadScreenButton: true

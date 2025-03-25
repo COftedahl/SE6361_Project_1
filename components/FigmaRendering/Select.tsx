@@ -5,6 +5,8 @@ import DownArrow from "./svg/Arrows/DownArrow";
 import { standardBorderRadius } from "@/constants/Styles";
 import { DimensionValue, StyleSheet } from 'react-native';
 
+// Visit https://www.npmjs.com/package/react-native-picker-select for documentation
+
 interface Props extends PickerSelectProps{
   margin?: DimensionValue | number, 
   padding?: DimensionValue | number, 
