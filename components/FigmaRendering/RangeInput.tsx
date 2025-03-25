@@ -1,7 +1,8 @@
 import RnRangeSlider, { SliderProps } from "rn-range-slider";
-import { DimensionValue, StyleSheet } from 'react-native';
+import { DimensionValue, StyleSheet, TouchableHighlight } from 'react-native';
 import { ThemedView } from "./ThemedView";
 import { Colors } from "@/constants/Colors";
+import { useState } from "react";
 
 // Visit https://www.npmjs.com/package/rn-range-slider for documentation
 
@@ -14,6 +15,7 @@ interface Props extends Partial<SliderProps> {
   inactiveRailColor?: string, 
   thumbPadding?: DimensionValue | number, 
   thumbBorderRadius?: DimensionValue | number, 
+  activeThumbColor?: string, 
   activeRailPadding?: DimensionValue | number, 
   inactiveRailPadding?: DimensionValue | number, 
   thumbShadowColor?: string, 
@@ -28,6 +30,8 @@ interface Props extends Partial<SliderProps> {
 }
 
 const RangeInput = (props: Props) => {
+
+  const defaultActiveThumbColor: string = Colors.dullblue;
 
   const defaultThumbProps: ThumbProps = {
     padding: 10, 
@@ -82,11 +86,25 @@ const RangeInput = (props: Props) => {
     shadowRadius: (props.activeRailShadowRadius ? props.activeRailShadowRadius : defaultRailSelectedProps.shadowRadius), 
   }
 
+  const finalActiveThumbColor: string = (props.activeThumbColor ? props.activeThumbColor : defaultActiveThumbColor);
+
+  const [thumbColor, setThumbColor] = useState<string>(finalThumbProps.backgroundColor);
+
+  const handleSliderTouched = () => {
+    setThumbColor(finalActiveThumbColor);
+  }
+
+  const handleSliderReleased = () => {
+    setThumbColor(finalThumbProps.backgroundColor);
+  }
+
   return (
     <RnRangeSlider 
-      renderThumb={() => <Thumb {...finalThumbProps} />} 
+      renderThumb={() => <Thumb {...finalThumbProps} backgroundColor={thumbColor} />} 
       renderRail={() => <Rail {...finalInactiveRailProps} />} 
       renderRailSelected={() => <RailSelected {...finalRailSelectedProps} />}
+      onTouchStart={handleSliderTouched}
+      onTouchEnd={handleSliderReleased}
       {...props}
     />
   )
@@ -106,6 +124,9 @@ const Thumb = (props: ThumbProps) => {
   return (
     <ThemedView style={{...props} as any}/>
   )
+  // <TouchableHighlight style={{...props} as any} >
+  //     <ThemedView></ThemedView>
+  //   </TouchableHighlight> 
 }
 
 interface RailProps {
