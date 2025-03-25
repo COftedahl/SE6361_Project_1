@@ -7,8 +7,9 @@ import { StyleSheet } from 'react-native';
 import { CHOOSE_ROUTE_DESTINATION } from "@/constants/Functionality";
 import LinkedLocation from "@/components/FigmaRendering/LinkedLocation";
 import RNPickerSelect from 'react-native-picker-select';
-import Picker from "react-native-picker-select";
+// import { Picker } from '@react-native-picker/picker';
 import DownArrow from "@/components/FigmaRendering/svg/Arrows/DownArrow";
+import Picker from "react-native-picker-select";
 
 const LocationSearchTab = () => {
   return (
@@ -28,9 +29,10 @@ const LocationSearchTab = () => {
             {label: "", value: ""},
             {label: "a", value: "a"}
           ]}
-          Icon={() => null}
+          Icon={() => <DownArrow/>}
           style={styles.selectStyles}
         >
+          {/* <Picker.Item label="a" value={"a"}/> */}
         </Picker>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
@@ -65,6 +67,10 @@ const styles=StyleSheet.create({
       borderRadius: standardBorderRadius, 
       backgroundColor: Colors.white,
       position: "relative", 
+      backgroundImage: "none",
+      mozAppearance: "none",
+      webkitAppearance: "none",
+      appearance: "none",
     }, 
     iconContainer: {
       right: 55,
