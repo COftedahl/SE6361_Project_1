@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "flex-end",
     gap: 8,
+    width: 0,
   }, 
   titleStyle: {
     fontWeight: 700,

@@ -19,6 +19,7 @@ const HomeTab = () => {
       <ThemedView>
         <Searchbar placeholder={"Search"} value={""} margin={sectionHorizontalPadding} sticky={true} transparentBackground={false} />
         <LinkedLocation name={"Recent Location"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={ROUTE_DESTINATION} />
+        <br/>
         <TitleLink title={"Favorites"} destination={"./favorites"} />
         <ThemedView style={styles.centeredRow}>
           <ThemedView style={styles.favoriteLocationsDiv}>
