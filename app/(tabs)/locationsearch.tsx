@@ -21,19 +21,20 @@ const LocationSearchTab = () => {
 
       <ThemedView>
         <Searchbar placeholder={"Search"} value={""} margin={sectionHorizontalPadding} sticky={true} transparentBackground={false} />
-        <Picker 
-          placeholder={{label: "Filter", value: "", color: Colors.lightgrey}}
-          value={""}
-          onValueChange={(e) => console.log(e)}
-          items={[
-            {label: "", value: ""},
-            {label: "a", value: "a"}
-          ]}
-          Icon={() => <DownArrow/>}
-          style={styles.selectStyles}
-        >
-          {/* <Picker.Item label="a" value={"a"}/> */}
-        </Picker>
+        <ThemedView style={{position: "relative", width: "fit-content" as any }}>
+          <Picker 
+            placeholder={{label: "Filter", value: "", color: Colors.lightgrey}}
+            value={""}
+            onValueChange={(e) => console.log(e)}
+            items={[
+              {label: "", value: ""},
+              {label: "a", value: "a"}
+            ]}
+            Icon={() => <DownArrow/>}
+            style={styles.selectStyles}
+          >
+          </Picker>
+        </ThemedView>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.blue} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.orange} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
         <LinkedLocation name={"Location Name"} width={"FULL"} includePlusSign={false} color={Colors.golden} textLocation={"INSIDE"} to={CHOOSE_ROUTE_DESTINATION}/>
@@ -66,16 +67,18 @@ const styles=StyleSheet.create({
       borderStyle: "solid", 
       borderRadius: standardBorderRadius, 
       backgroundColor: Colors.white,
-      position: "relative", 
-      backgroundImage: "none",
-      mozAppearance: "none",
-      webkitAppearance: "none",
+      // position: "relative", 
+      // backgroundImage: "none",
+      MozAppearance: "none",
+      WebkitAppearance: "none",
       appearance: "none",
+      paddingRight: 50,
     }, 
     iconContainer: {
-      right: 55,
-      backgroundColor: Colors.white,
-      color: Colors.white,
+      right: 0,
+      top: "10%",
+      // backgroundColor: Colors.white,
+      // color: Colors.white,
     }
   } as any,
 })
