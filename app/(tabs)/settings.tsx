@@ -10,9 +10,9 @@ import { ThemedView } from "@/components/FigmaRendering/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { BaseFontSize } from "@/constants/Font";
 import { inputBorderRadius, inputPadding, standardBorderRadius } from "@/constants/Styles";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, TextInput } from 'react-native';
+import { Pressable, StyleSheet, TextInput } from 'react-native';
 import ToggleSwitch from "toggle-switch-react-native";
 
 const SettingsTab = () => {
@@ -20,9 +20,16 @@ const SettingsTab = () => {
   const SVGICON_DIMENSIONS: number = 50;
 
   const [alertEmergencyContactFirst, setAlertEmergencyContactFirst] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleEmergencyContactSliderChanged = (newVal: boolean) => {
     setAlertEmergencyContactFirst(newVal);
+  }
+
+  const handleLogoutClicked = () => {
+    router.dismissAll();
+    router.dismiss();
+    router.navigate("/login");
   }
 
   return (
@@ -210,11 +217,10 @@ const SettingsTab = () => {
           Account
         </ThemedText>
 
-        <Link href={"/login"} style={[styles.button, styles.logoutButton]}>
-          Logout
-        </Link>
+        <Pressable onPress={handleLogoutClicked} style={[styles.button, styles.logoutButton]}>
+          <ThemedText>Logout</ThemedText>
+        </Pressable>
         
-
       </ThemedView>
     </TabLayoutManager>
   )

@@ -10,16 +10,16 @@ import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, TextInput } from 'react-native';
 
-const LoginScreen = () => {
+const JoinScreen = () => {
 
   const buttonLogoSize = 25;
 
   const [email, setEmail] = useState<string>("");
-  let router = useRouter();
+    let router = useRouter();
 
   const handleContinuePressed = () => {
     if (email == "") {
-      router.navigate("/join");
+      
     }
     else {
       router.dismissAll();
@@ -33,9 +33,9 @@ const LoginScreen = () => {
       <ThemedView style={[styles.loginContentDiv, styles.centeredColumnFlexbox]}>
         <ThemedView style={styles.centeredColumnFlexbox}>
           {/* Login area */}
-          <ThemedText style={styles.headingText}>Login</ThemedText>
+          <ThemedText style={styles.headingText}>Sign Up</ThemedText>
           <ThemedText>
-            Enter your email to login
+            Enter email address to create account
           </ThemedText>
         </ThemedView>
         <StyledTextInput placeholder={"email@domain.com"} style={{width: standardWidth}} placeholderTextColor={Colors.lightgrey} onChangeText={(e) => setEmail(e)}/>
@@ -57,6 +57,12 @@ const LoginScreen = () => {
           <AppleLogoSVGIcon width={buttonLogoSize} height={buttonLogoSize}/>
           <ThemedText style={styles.textInherit}>Continue with Apple</ThemedText>
         </Link>
+        {/* Return to login */}
+        <ThemedText style={styles.returnText}>
+          Already have an account? 
+          <Link href={"/login"} style={styles.clickHereLink}> Click here </Link>
+          to return to login
+        </ThemedText>
         {/* fine print */}
         <ThemedText style={styles.finePrint}>
           By clicking continue, you agree to our 
@@ -70,14 +76,14 @@ const LoginScreen = () => {
   )
 }
 
-const standardWidth = "90%";
+const standardWidth = "100%";
 
 const styles = StyleSheet.create({
   screenContainer: {
     width: "100%",
     height: "100%",
     backgroundColor: Colors.white, 
-    padding: sectionHorizontalPadding, 
+    padding: 3 * sectionHorizontalPadding, 
   }, 
   titleText: {
     fontWeight: 700, 
@@ -136,6 +142,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     color: Colors.grey,
   }, 
+  returnText: {
+    textAlign: "center", 
+  }, 
+  clickHereLink: {
+    color: Colors.blue,
+  }, 
   finePrint: {
     color: Colors.lightgrey, 
     fontSize: 0.8 * BaseFontSize, 
@@ -147,4 +159,4 @@ const styles = StyleSheet.create({
   }, 
 })
 
-export default LoginScreen;
+export default JoinScreen;

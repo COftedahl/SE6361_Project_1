@@ -37,7 +37,7 @@ const Searchbar = (props: Props) => {
       <ThemedView style={styles.inputBarStyle}>
         <MagnifyingGlassSVGIcon width={20} height={20}/>
         <MicrophoneSVGIcon width={20} height={20}/>
-        <TextInput {...props} style={styles.textInputStyle} />
+        <TextInput {...props} style={styles.textInputStyle} placeholderTextColor={Colors.lightgrey}/>
       </ThemedView>
     </ThemedView>
   )

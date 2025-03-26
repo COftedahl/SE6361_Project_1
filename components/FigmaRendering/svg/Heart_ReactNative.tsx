@@ -2,7 +2,7 @@ import { SVG_ICON_GetIconValues, SVG_ICON_PROPS, SVG_ICON_PROPS_DEFINED, svgRend
 
 interface Props extends SVG_ICON_PROPS {}
 
-const HeartSVGIcon = (props: Props) => {
+const Heart_ReactNativeSVGIcon = (props: Props) => {
 
   const scaleFactor: number = 1;
   const standardSVGSize: number = 100;
@@ -22,7 +22,7 @@ const HeartSVGIcon = (props: Props) => {
 
   
   const upperCurveHeight: number = 20;
-  const lowerCurveHeight: number = 60;
+  const lowerCurveHeight: number = 60
   const totalWidth: number = 80;
   const totalHeight: number = upperCurveHeight + lowerCurveHeight;
 
@@ -45,9 +45,8 @@ const HeartSVGIcon = (props: Props) => {
           />
         </clipPath>
       </defs>
-      
-    <g>
-      <path {...pathAttrs} fillOpacity={1} fill={finalProps.backgroundColor} clipPath={"url(#heart-clip-path)"}
+
+      <path {...pathAttrs} fillOpacity={1} fill={finalProps.backgroundColor} clipPath="url(#heart-clip-path)" 
         d={
           `M 0,0 ` + 
           `h ${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale))} ` +
@@ -67,7 +66,7 @@ const HeartSVGIcon = (props: Props) => {
             `q ${0},${scaleFactor * ((totalHeight - upperCurveHeight) / 2)}  ${scaleFactor * (totalWidth * 0.5)},${scaleFactor * (totalHeight - upperCurveHeight)}`
         }
       />
-</g>
+
       {/* <ellipse {...pathAttrs} fillOpacity="0" ry={`${innerCircleRadius}`} rx={`${innerCircleRadius}`} cx={`${100 / 2}`} cy={`${handleHeight + (sideHeight / 2) + ((100 - totalHeight)/2)}`} /> */}
       {/* <ZERO_ZERO_MARKER/> */}
       {/* <path {...pathAttrs} d={"M 50," + ((100 - totalHeight)/2) + " v " + totalHeight}/> */}
@@ -75,4 +74,4 @@ const HeartSVGIcon = (props: Props) => {
   )
 }
 
-export default HeartSVGIcon;
+export default Heart_ReactNativeSVGIcon;

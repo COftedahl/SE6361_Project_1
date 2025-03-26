@@ -8,8 +8,12 @@ interface Props extends TextInputProps
 }
 
 const StyledTextInput = (props: Props) => {
+
+  const defaultPlaceholderTextColor = Colors.lightgrey;
+  const finalPlaceholderTextColor = (props.placeholderTextColor ? props.placeholderTextColor : defaultPlaceholderTextColor);
+
   return (
-    <TextInput {...props} style={{...styles.textInput, width: (props.style && (props.style as any).width ? (props.style as any).width : inputWidth)}}/>
+    <TextInput {...props} style={{...styles.textInput, width: (props.style && (props.style as any).width ? (props.style as any).width : inputWidth)}} placeholderTextColor={finalPlaceholderTextColor}/>
   )
 }
 

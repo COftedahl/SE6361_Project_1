@@ -1,2 +1,3 @@
 -Design Idea for homepage: divide into more sections vertically, each section use a horizontal scroller to view the routes for the section
 -Figure out why the tab buttons look weird if you use the login button
+  -It is rerendering the entire screen so the id is duplicated when navigating to the screen - need to not render the previous stack
