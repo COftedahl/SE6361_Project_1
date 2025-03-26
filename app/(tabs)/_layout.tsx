@@ -12,6 +12,36 @@ import { RelativePathString, Stack } from 'expo-router';
 // import { useIsFocused } from '@react-navigation/native';
 import { standardBorderRadius } from '@/constants/Styles';
 
+
+const baseTabHref: RelativePathString = "./(tabs)/";
+
+export const TabLayoutArray: {tabName: string, pathname: string, route: RelativePathString}[] = [
+  {
+    tabName: "Home",
+    pathname: "/",
+    route: baseTabHref,
+  }, 
+  {
+    tabName: "Location Search",
+    pathname: "/locationsearch",
+    route: baseTabHref + "locationsearch" as RelativePathString,
+  }, 
+  {
+    tabName: "Favorites",
+    pathname: "/favorites",
+    route: baseTabHref + "favorites" as RelativePathString,
+  }, 
+  {
+    tabName: "Recents",
+    pathname: "/recents",
+    route: baseTabHref + "recents" as RelativePathString,
+  }, {
+    tabName: "Settings",
+    pathname: "/settings",
+    route: baseTabHref + "settings" as RelativePathString,
+  }, 
+]
+
 const TabLayout = () => {
 
   // const isFocused = useIsFocused();
@@ -31,8 +61,6 @@ const TabLayout = () => {
     }
   }
 
-  const baseTabHref: RelativePathString = "./(tabs)/";
-
   return (
     // <View style={styles.allTabScreenStyles}>
       <Tabs screenOptions={{
@@ -45,36 +73,41 @@ const TabLayout = () => {
         <Tabs.Screen 
           name='index' 
           options={{ 
-            header: () => <Header pageTitle={"Home"} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/>, 
+            header: () => <Header pageTitle={TabLayoutArray[0].tabName} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/>, 
             tabBarIcon: ({color, focused}) => <HomeSVGIcon {...GetSVGIconProps({color, focused})} />, 
+            animation: 'shift',
           }} 
         />
         <Tabs.Screen 
           name='locationsearch' 
           options={{ 
-            header: () => <Header pageTitle={"Location Search"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+            header: () => <Header pageTitle={TabLayoutArray[1].tabName} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
             tabBarIcon: ({color, focused}) => <CompassSVGIcon {...GetSVGIconProps({color, focused})} />, 
+            animation: 'shift',
           }} 
         />
         <Tabs.Screen 
           name='favorites' 
           options={{ 
-            header: () => <Header pageTitle={"Favorites"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+            header: () => <Header pageTitle={TabLayoutArray[2].tabName} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
             tabBarIcon: ({color, focused}) => <HeartSVGIcon {...GetSVGIconProps({color, focused})} />, 
+            animation: 'shift',
           }} 
         />
         <Tabs.Screen 
           name='recents' 
           options={{ 
-            header: () => <Header pageTitle={"Recents"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>,
+            header: () => <Header pageTitle={TabLayoutArray[3].tabName}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>,
             tabBarIcon: ({color, focused}) => <CalendarSVGIcon {...GetSVGIconProps({color, focused})} />, 
+            animation: 'shift',
           }} 
         />
         <Tabs.Screen 
           name='settings' 
           options={{ 
-            header: () => <Header pageTitle={"Settings"}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
+            header: () => <Header pageTitle={TabLayoutArray[4].tabName}  displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>, 
             tabBarIcon: ({color, focused}) => <PersonSVGIcon {...GetSVGIconProps({color, focused})} />, 
+            animation: 'shift',
           }} 
         />
       </Tabs>
