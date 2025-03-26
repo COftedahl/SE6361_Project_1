@@ -46,7 +46,7 @@ const Select = (props: Props) => {
             inputIOS: {...selectStylesObj, ...styles.selectStyles},
             inputAndroid: {...selectStylesObj, ...styles.selectStyles},
             inputWeb: {...selectStylesObj, ...styles.selectStyles},
-            iconContainer: {...styles.iconContainer, top: ((selectStylesObj.padding as number )/ 2 + 2)},
+            iconContainer: {...styles.iconContainer, top: ((selectStylesObj.padding as number )/ 2 * 2.5 - 5 )},
           }
         }
       >
@@ -79,6 +79,7 @@ const styles=StyleSheet.create({
       WebkitAppearance: "none",
       appearance: "none",
       paddingRight: 50,
+      lineHeight: 19, 
     } as any, 
     iconContainer: {
       right: 0,

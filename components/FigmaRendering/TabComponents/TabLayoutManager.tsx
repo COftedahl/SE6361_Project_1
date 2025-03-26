@@ -51,7 +51,6 @@ const TabLayoutManager = (props: Props) => {
         config={gestureRecognizerConfig}
         style={{
           flex: 1,
-          backgroundColor: Colors.black
         }}
       >
       {/* <Header pageTitle={'Home'} displayStrideLengthButton={true} displayCameraButton={true} displayReadScreenButton={true}/> */}

@@ -1,5 +1,6 @@
 import RangeInput from "@/components/FigmaRendering/RangeInput";
 import Select from "@/components/FigmaRendering/Select";
+import StyledTextInput, { inputWidth } from "@/components/FigmaRendering/StyledTextInput";
 import MicrophoneSVGIcon from "@/components/FigmaRendering/svg/Microphone";
 import RabbitSVGIcon from "@/components/FigmaRendering/svg/Rabbit";
 import TurtleSVGIcon from "@/components/FigmaRendering/svg/Turtle";
@@ -8,14 +9,11 @@ import { ThemedText } from "@/components/FigmaRendering/ThemedText";
 import { ThemedView } from "@/components/FigmaRendering/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { BaseFontSize } from "@/constants/Font";
-import { standardBorderRadius } from "@/constants/Styles";
+import { inputBorderRadius, inputPadding, standardBorderRadius } from "@/constants/Styles";
+import { Link } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, TextInput } from 'react-native';
 import ToggleSwitch from "toggle-switch-react-native";
-
-
-const inputWidth = "60%";
-const inputPadding = 15;
 
 const SettingsTab = () => {
   
@@ -145,7 +143,7 @@ const SettingsTab = () => {
           <ThemedText style={styles.textInputLabel}>
             Name
           </ThemedText>
-          <TextInput placeholder={"Enter Name Here"} style={styles.textInput}/>
+          <StyledTextInput placeholder={"Enter Name Here"} />
           <MicrophoneSVGIcon height={40} width={40} strokeWidth={"5"}/>
         </ThemedView>
         {/* Start input row "Phone Number" */}
@@ -153,7 +151,7 @@ const SettingsTab = () => {
           <ThemedText style={styles.textInputLabel}>
             Phone Number
           </ThemedText>
-          <TextInput placeholder={"Enter Name Here"} style={styles.textInput}/>
+          <StyledTextInput placeholder={"Enter Name Here"} />
           <MicrophoneSVGIcon height={40} width={40} strokeWidth={"5"}/>
         </ThemedView>
         {/* Start input row "Address" */}
@@ -161,7 +159,7 @@ const SettingsTab = () => {
           <ThemedText style={styles.textInputLabel}>
             Address
           </ThemedText>
-          <TextInput placeholder={"Enter Name Here"} style={styles.textInput}/>
+          <StyledTextInput placeholder={"Enter Name Here"} />
           <MicrophoneSVGIcon height={40} width={40} strokeWidth={"5"}/>
         </ThemedView>
         {/* Start input row "Dial Emergency Contact Instead of 911" */}
@@ -199,13 +197,22 @@ const SettingsTab = () => {
                 {label: "German", value: "German"}
               ]
             }
-            borderRadius={2 * standardBorderRadius}
+            borderRadius={inputBorderRadius}
             borderColor={Colors.lightgrey}
             width={inputWidth}
             padding={inputPadding}
           />
           <MicrophoneSVGIcon height={40} width={40} strokeWidth={"5"}/>
         </ThemedView>
+
+        {/* Start section Account */}
+        <ThemedText style={styles.sectionTitleText}>
+          Account
+        </ThemedText>
+
+        <Link href={"/login"} style={[styles.button, styles.logoutButton]}>
+          Logout
+        </Link>
         
 
       </ThemedView>
@@ -253,14 +260,6 @@ const styles = StyleSheet.create({
   textInputLabel: {
     width: "30%", 
   }, 
-  textInput: {
-    borderRadius: 2 * standardBorderRadius, 
-    borderWidth: 1, 
-    borderColor: Colors.lightgrey, 
-    padding: inputPadding, 
-    paddingVertical: 12,
-    width: inputWidth, 
-  }, 
   toggleRowDiv: {
     flexDirection: "row", 
     justifyContent: "space-between", 
@@ -268,6 +267,21 @@ const styles = StyleSheet.create({
     alignItems: "center", 
     marginVertical: 10,
   }, 
+  button: {
+    width: "60%",
+    padding: inputPadding, 
+    display: "flex", 
+    flexDirection: "column", 
+    alignItems: "center", 
+    borderRadius: inputBorderRadius
+  }, 
+  logoutButton: {
+    backgroundColor: "rgba(255,0,0,0.2)", 
+    color: Colors.red,
+    borderWidth: 1, 
+    borderColor: Colors.red, 
+    marginHorizontal: "auto", 
+  }
 })
 
 export default SettingsTab;
