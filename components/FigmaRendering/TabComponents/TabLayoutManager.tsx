@@ -12,6 +12,7 @@ interface Props {
     displayCameraButton: boolean, 
     displayReadScreenButton: boolean, 
   }, 
+  useGestureHandler: boolean, 
   children?: React.ReactElement, 
   
 }
@@ -26,21 +27,25 @@ const TabLayoutManager = (props: Props) => {
   };
 
   const handleSwipeLeft = (state: any) => {
-    // console.log(state);
-    let newTabIndex: number = TabLayoutArray.findIndex((tab: {tabName: string, pathname: string, route: RelativePathString}) => window.location.pathname === tab.pathname);
-    newTabIndex = (newTabIndex + 1 >= TabLayoutArray.length ? TabLayoutArray.length - 1 : newTabIndex + 1);
-    const newURL: RelativePathString = "." + TabLayoutArray[newTabIndex].pathname as RelativePathString;
-    // console.log(newURL);
-    router.navigate(newURL);
+    if (props.useGestureHandler) {
+      // console.log(state);
+      let newTabIndex: number = TabLayoutArray.findIndex((tab: {tabName: string, pathname: string, route: RelativePathString}) => window.location.pathname === tab.pathname);
+      newTabIndex = (newTabIndex + 1 >= TabLayoutArray.length ? TabLayoutArray.length - 1 : newTabIndex + 1);
+      const newURL: RelativePathString = "." + TabLayoutArray[newTabIndex].pathname as RelativePathString;
+      // console.log(newURL);
+      router.navigate(newURL);
+    }
   }
 
   const handleSwipeRight = (state: any) => {
-    // console.log(state);
-    let newTabIndex: number = TabLayoutArray.findIndex((tab: {tabName: string, pathname: string, route: RelativePathString}) => window.location.pathname === tab.pathname);
-    newTabIndex = (newTabIndex - 1 < 0 ? 0 : newTabIndex - 1);
-    const newURL: RelativePathString = "." + TabLayoutArray[newTabIndex].pathname as RelativePathString;
-    // console.log(newURL);
-    router.navigate(newURL);
+    if (props.useGestureHandler) {
+      // console.log(state);
+      let newTabIndex: number = TabLayoutArray.findIndex((tab: {tabName: string, pathname: string, route: RelativePathString}) => window.location.pathname === tab.pathname);
+      newTabIndex = (newTabIndex - 1 < 0 ? 0 : newTabIndex - 1);
+      const newURL: RelativePathString = "." + TabLayoutArray[newTabIndex].pathname as RelativePathString;
+      // console.log(newURL);
+      router.navigate(newURL);
+    }
   }
 
   return (

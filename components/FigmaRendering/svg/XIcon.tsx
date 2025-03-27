@@ -2,7 +2,7 @@ import { SVG_ICON_GetIconValues, SVG_ICON_PROPS, SVG_ICON_PROPS_DEFINED, svgRend
 
 interface Props extends SVG_ICON_PROPS {}
 
-const PlusSVGIcon = (props: Props) => {
+const XSVGIcon = (props: Props) => {
 
   const scaleFactor: number = 1;
   const standardSVGSize: number = 100;
@@ -19,7 +19,7 @@ const PlusSVGIcon = (props: Props) => {
     strokeLinecap: "round" as "round",
   };
 
-  const lineLength: number = standardSVGSize * 0.9;
+  const parallelLineLength: number = standardSVGSize * 0.8;
 
   return (
     <svg {...svgRenderingAttribute} viewBox={`0 0 ${standardSVGSize * finalProps.viewBoxScale * scaleFactor} ${standardSVGSize * finalProps.viewBoxScale * scaleFactor}`} {...svgAttrs}>
@@ -34,10 +34,10 @@ const PlusSVGIcon = (props: Props) => {
 
       <path {...pathAttrs}
         d={`` + //create the body rectangle
-           `M ${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) / 2) - (lineLength / 2))},${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale) / 2)} ` + 
-           `h ${scaleFactor * (lineLength)} ` + 
-           `M ${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale) / 2)},${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) / 2) - (lineLength / 2))} ` + 
-           `v ${scaleFactor * (lineLength)} `
+           `M ${scaleFactor * ((((standardSVGSize * finalProps.viewBoxScale) - parallelLineLength) / 2))},${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) - parallelLineLength) / 2)} ` + 
+           `l ${scaleFactor * (parallelLineLength)},${scaleFactor * (parallelLineLength)} ` + 
+           `M ${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale) - (((standardSVGSize * finalProps.viewBoxScale) - parallelLineLength) / 2))},${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) - parallelLineLength) / 2)} ` + 
+           `l ${scaleFactor * (-parallelLineLength)},${scaleFactor * (parallelLineLength)} `
         }
       />
       
@@ -48,4 +48,4 @@ const PlusSVGIcon = (props: Props) => {
   )
 }
 
-export default PlusSVGIcon;
+export default XSVGIcon;

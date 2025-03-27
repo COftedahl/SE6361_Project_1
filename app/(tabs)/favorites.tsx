@@ -13,7 +13,7 @@ import { Link } from "expo-router";
 
 const FavoritesTab = () => {
   return (
-    <TabLayoutManager pageTitle={""} headerOptions={{
+    <TabLayoutManager pageTitle={""} useGestureHandler={true} headerOptions={{
       displayStrideLengthButton: true,
       displayCameraButton: true,
       displayReadScreenButton: true

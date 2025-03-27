@@ -5,6 +5,7 @@ import { ThemedText } from "@/components/FigmaRendering/ThemedText";
 import { ThemedView } from "@/components/FigmaRendering/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { BaseFontSize } from "@/constants/Font";
+import { PreNavigateToTabs } from "@/constants/Functionality";
 import { inputBorderRadius, inputPadding, sectionHorizontalPadding, standardBorderRadius } from "@/constants/Styles";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
@@ -22,7 +23,7 @@ const LoginScreen = () => {
       router.navigate("/join");
     }
     else {
-      router.dismissAll();
+      PreNavigateToTabs(router);
       router.navigate("/(tabs)");
     }
   }

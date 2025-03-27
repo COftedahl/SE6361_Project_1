@@ -2,7 +2,7 @@ import { SVG_ICON_GetIconValues, SVG_ICON_PROPS, SVG_ICON_PROPS_DEFINED, svgRend
 
 interface Props extends SVG_ICON_PROPS {}
 
-const PlusSVGIcon = (props: Props) => {
+const CheckmarkSVGIcon = (props: Props) => {
 
   const scaleFactor: number = 1;
   const standardSVGSize: number = 100;
@@ -19,7 +19,16 @@ const PlusSVGIcon = (props: Props) => {
     strokeLinecap: "round" as "round",
   };
 
-  const lineLength: number = standardSVGSize * 0.9;
+  const smallArmVerticalDistance: number = 23;
+  const smallArmHorizontalDistance: number = 25;
+  const longArmVerticalDistance: number = 55;
+  const longArmHorizontalDistance: number = 50;
+
+  const totalWidth = smallArmHorizontalDistance + longArmHorizontalDistance;
+  const totalHeight = longArmVerticalDistance;
+
+  const startingXCoord = ((standardSVGSize * finalProps.viewBoxScale - totalWidth) / 2) + smallArmHorizontalDistance;
+  const startingYCoord = (standardSVGSize * finalProps.viewBoxScale) - ((standardSVGSize * finalProps.viewBoxScale - totalHeight) / 2);
 
   return (
     <svg {...svgRenderingAttribute} viewBox={`0 0 ${standardSVGSize * finalProps.viewBoxScale * scaleFactor} ${standardSVGSize * finalProps.viewBoxScale * scaleFactor}`} {...svgAttrs}>
@@ -34,10 +43,10 @@ const PlusSVGIcon = (props: Props) => {
 
       <path {...pathAttrs}
         d={`` + //create the body rectangle
-           `M ${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) / 2) - (lineLength / 2))},${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale) / 2)} ` + 
-           `h ${scaleFactor * (lineLength)} ` + 
-           `M ${scaleFactor * ((standardSVGSize * finalProps.viewBoxScale) / 2)},${scaleFactor * (((standardSVGSize * finalProps.viewBoxScale) / 2) - (lineLength / 2))} ` + 
-           `v ${scaleFactor * (lineLength)} `
+           `M ${scaleFactor * (startingXCoord)},${scaleFactor * (startingYCoord)} ` + 
+           `l ${scaleFactor * (-smallArmHorizontalDistance)},${scaleFactor * (-smallArmVerticalDistance)} ` + 
+           `M ${scaleFactor * (startingXCoord)},${scaleFactor * (startingYCoord)} ` + 
+           `l ${scaleFactor * (longArmHorizontalDistance)},${scaleFactor * (-longArmVerticalDistance)} `
         }
       />
       
@@ -48,4 +57,4 @@ const PlusSVGIcon = (props: Props) => {
   )
 }
 
-export default PlusSVGIcon;
+export default CheckmarkSVGIcon;

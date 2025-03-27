@@ -10,7 +10,7 @@ import { ROUTE_DESTINATION } from "@/constants/Functionality";
 
 const HomeTab = () => {
   return (
-    <TabLayoutManager pageTitle={"Home"} headerOptions={{
+    <TabLayoutManager pageTitle={"Home"} useGestureHandler={true} headerOptions={{
       displayStrideLengthButton: true,
       displayCameraButton: true,
       displayReadScreenButton: true

@@ -15,6 +15,7 @@ export interface LocationProps {
   includePlusSign: boolean, 
   color: string, 
   textLocation: "INSIDE" | "OUTSIDE", 
+  displaySpeaker?: boolean, 
 }
 
 const DEFAULT_BORDER_RADIUS = standardBorderRadius;
@@ -24,7 +25,7 @@ const DEFAULT_PADDING = 10;
 const Location = (props: LocationProps) => {
 
   const DEFAULT_HEIGHT = (((props.textLocation === "INSIDE") && props.includePlusSign) ? 110 : 80);
-  const PLUS_SIGN_LINK_DESTINATION = "/(tabs)";
+  const PLUS_SIGN_LINK_DESTINATION = "./addroute";
   const router = useRouter();
   const INNER_TEXT_STYLE = {
     fontSize: 2 * BaseFontSize,
@@ -43,6 +44,7 @@ const Location = (props: LocationProps) => {
   }
 
   const handlePlusSignClicked = (e: any) => {
+    console.log("Plus sign clicked");
     e.preventDefault();
     e.stopPropagation();
     router.navigate(PLUS_SIGN_LINK_DESTINATION);
@@ -57,78 +59,7 @@ const Location = (props: LocationProps) => {
           boxSizing: ( props.textLocation === "INSIDE" ? "border-box" : "content-box" ),
         }
       ]}>
-      <ThemedView
-        style={
-          [
-            styles.viewStyles, 
-            {
-              height: props.height ?? DEFAULT_HEIGHT,
-              width: ( props.width == "FULL" ? "100%" : props.width), 
-              backgroundColor: props.color, 
-
-            }, 
-            
-          ]
-        }
-      >
-        {props.textLocation === "INSIDE" 
-        ?
-          <>
-            <ThemedText 
-              style={
-                [
-                  styles.textStyles, 
-                  (props.textLocation == "INSIDE" ? {...INNER_TEXT_STYLE} : {})
-                ]
-              }
-            >
-              {props.name}
-            </ThemedText>
-            <ThemedView 
-              style={
-                [
-                  styles.rightDivStyles, 
-                  {
-                    justifyContent: (props.includePlusSign ? "space-between" : "flex-end"),
-                  }
-                ]
-              }
-            >
-              {props.includePlusSign 
-              ? 
-              <Pressable onPress={handlePlusSignClicked}>
-                <PlusSVGIcon width={40} height={40} strokeWidth={"8"}/>
-              </Pressable>
-              :
-                <></>
-              }
-              <SpeakerSVGIcon width={40} height={40} viewBoxScale={0.8}/>
-            </ThemedView>
-          </>
-        :
-          <></>
-        }
-      </ThemedView>
-      {props.textLocation === "OUTSIDE" 
-      ?
-        <>
-          <ThemedView style={styles.outerDivStyles}>
-            <SpeakerSVGIcon width={50} height={40} viewBoxScale={0.8}/>
-            <ThemedText 
-              style={
-                [
-                  styles.textStyles, 
-                  (props.textLocation == "OUTSIDE" ? {...OUTER_TEXT_STYLE} : {})
-                ]
-              }
-            >
-              {props.name}
-            </ThemedText>
-          </ThemedView>
-        </>
-      :
-        <></>
-      }
+      <InnerLocationContent {...props}/>
     </ThemedView>
   );
 }
@@ -164,7 +95,7 @@ export default Location;
 export const InnerLocationContent = (props: LocationProps) => {
 
   const DEFAULT_HEIGHT = (((props.textLocation === "INSIDE") && props.includePlusSign) ? 110 : 80);
-  const PLUS_SIGN_LINK_DESTINATION = "/(tabs)";
+  const PLUS_SIGN_LINK_DESTINATION = "/addroute";
   const router = useRouter();
   const INNER_TEXT_STYLE = {
     fontSize: 2 * BaseFontSize,
@@ -265,3 +196,76 @@ export const InnerLocationContent = (props: LocationProps) => {
     </>
   )
 }
+
+// <ThemedView
+//         style={
+//           [
+//             styles.viewStyles, 
+//             {
+//               height: props.height ?? DEFAULT_HEIGHT,
+//               width: ( props.width == "FULL" ? "100%" : props.width), 
+//               backgroundColor: props.color, 
+
+//             }, 
+            
+//           ]
+//         }
+//       >
+//         {props.textLocation === "INSIDE" 
+//         ?
+//           <>
+//             <ThemedText 
+//               style={
+//                 [
+//                   styles.textStyles, 
+//                   (props.textLocation == "INSIDE" ? {...INNER_TEXT_STYLE} : {})
+//                 ]
+//               }
+//             >
+//               {props.name}
+//             </ThemedText>
+//             <ThemedView 
+//               style={
+//                 [
+//                   styles.rightDivStyles, 
+//                   {
+//                     justifyContent: (props.includePlusSign ? "space-between" : "flex-end"),
+//                   }
+//                 ]
+//               }
+//             >
+//               {props.includePlusSign 
+//               ? 
+//               <Pressable onPress={handlePlusSignClicked}>
+//                 <PlusSVGIcon width={40} height={40} strokeWidth={"8"}/>
+//               </Pressable>
+//               :
+//                 <></>
+//               }
+//               {props.displaySpeaker === undefined || props.displaySpeaker === true ? <SpeakerSVGIcon width={40} height={40} viewBoxScale={0.8}/> : <></>}
+//             </ThemedView>
+//           </>
+//         :
+//           <></>
+//         }
+//       </ThemedView>
+//       {props.textLocation === "OUTSIDE" 
+//       ?
+//         <>
+//           <ThemedView style={styles.outerDivStyles}>
+//             {props.displaySpeaker === undefined || props.displaySpeaker === true ? <SpeakerSVGIcon width={50} height={40} viewBoxScale={0.8}/> : <></>}
+//             <ThemedText 
+//               style={
+//                 [
+//                   styles.textStyles, 
+//                   (props.textLocation == "OUTSIDE" ? {...OUTER_TEXT_STYLE} : {})
+//                 ]
+//               }
+//             >
+//               {props.name}
+//             </ThemedText>
+//           </ThemedView>
+//         </>
+//       :
+//         <></>
+//       }

@@ -8,8 +8,9 @@ import { sectionHorizontalPadding } from "@/constants/Styles";
 
 
 const RecentsTab = () => {
+  
   return (
-    <TabLayoutManager pageTitle={""} headerOptions={{
+    <TabLayoutManager pageTitle={""} useGestureHandler={true} headerOptions={{
       displayStrideLengthButton: true,
       displayCameraButton: true,
       displayReadScreenButton: true

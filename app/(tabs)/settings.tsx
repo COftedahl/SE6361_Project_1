@@ -33,7 +33,7 @@ const SettingsTab = () => {
   }
 
   return (
-    <TabLayoutManager pageTitle={""} headerOptions={{
+    <TabLayoutManager pageTitle={""} useGestureHandler={true} headerOptions={{
       displayStrideLengthButton: true,
       displayCameraButton: true,
       displayReadScreenButton: true
