@@ -5,7 +5,7 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { TabLayoutArray } from "@/app/(tabs)/_layout";
 import { RelativePathString, useRouter } from "expo-router";
 
-interface Props {
+export interface TabLayoutManagerProps {
   pageTitle: string, 
   headerOptions: {
     displayStrideLengthButton: boolean, 
@@ -17,7 +17,7 @@ interface Props {
   
 }
 
-const TabLayoutManager = (props: Props) => {
+const TabLayoutManager = (props: TabLayoutManagerProps) => {
 
   const router = useRouter();
 
