@@ -1,5 +1,5 @@
 import { ThemedView } from "@/components/FigmaRendering/ThemedView";
-import { Colors } from '../../constants/Colors';
+import { Colors } from '@/constants/Colors';
 import TitleLink from "@/components/FigmaRendering/TitleLink";
 import TabLayoutManager from "@/components/FigmaRendering/TabComponents/TabLayoutManager";
 import { StyleSheet } from 'react-native';
