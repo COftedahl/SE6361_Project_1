@@ -9,11 +9,34 @@ const tintColorDark = '#fff';
 export const AvailableLocationColorNames = [
   "blue", 
   "dullblue",
+  "darkgreen", 
   "green", 
   "golden", 
   "black",
   "red", 
   "orange",
+]
+
+export const BlackWhite_Contrasting_AvailableLocationColorNames = [
+  "black", 
+  "black", 
+  "black", 
+  "black", 
+  "black", 
+  "white", 
+  "black", 
+  "black", 
+]
+
+export const Contrasting_AvailableLocationColorNames = [
+  "black", 
+  "black", 
+  "black", 
+  "black", 
+  "black", 
+  "golden", 
+  "black", 
+  "black", 
 ]
 
 export const Colors = {
@@ -35,6 +58,7 @@ export const Colors = {
   }, 
   blue: "#32ADE6", 
   dullblue: "#167695",
+  darkgreen: "#1FAF4A", 
   green: "#34C759", 
   golden: "#FBBC05", 
   black: "#2C2C2C",

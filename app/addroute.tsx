@@ -5,13 +5,14 @@ import Header from "@/components/FigmaRendering/TabComponents/Header";
 import TabLayoutManager from "@/components/FigmaRendering/TabComponents/TabLayoutManager";
 import { ThemedText } from "@/components/FigmaRendering/ThemedText";
 import { ThemedView } from "@/components/FigmaRendering/ThemedView";
-import { AvailableLocationColorNames, Colors } from "@/constants/Colors";
+import { AvailableLocationColorNames, Colors, Contrasting_AvailableLocationColorNames } from "@/constants/Colors";
 import { BaseFontSize } from "@/constants/Font";
-import Location from "@/components/FigmaRendering/Location";
-import { inputBorderRadius, inputPadding, sectionHorizontalPadding } from "@/constants/Styles";
+import { inputBorderRadius, inputPadding } from "@/constants/Styles";
 import { Pressable, StyleSheet, TextInput } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { PreNavigateToTabs } from "@/constants/Functionality";
+import OverlaidColorBlock from "@/components/FigmaRendering/OverlaidColorBlock";
+import { useState } from "react";
 
 const AddRouteScreen = () => {
 
@@ -19,6 +20,7 @@ const AddRouteScreen = () => {
   const iconStrokeWidth = "8";
 
   const router = useRouter();
+  const [selectedColorBlock, setSelectedColorBlock] = useState<string>("");
 
   const handleClosePressed = () => {
     PreNavigateToTabs(router);
@@ -26,6 +28,15 @@ const AddRouteScreen = () => {
 
   const handleConfirmPressed = () => {
     PreNavigateToTabs(router);
+  }
+
+  const handleColorBlockClicked = (color: string) => {
+    if (selectedColorBlock === color) {
+      setSelectedColorBlock("");
+    }
+    else {
+      setSelectedColorBlock(color);
+    }
   }
 
   return (
@@ -57,11 +68,17 @@ const AddRouteScreen = () => {
             Color
           </ThemedText>
           <ThemedView style={styles.colorAreaDiv}>
-            {AvailableLocationColorNames.map((colorName: string) => {
+            {AvailableLocationColorNames.map((colorName: string, index: number) => {
               return (
-                <Pressable key={colorName} style={styles.colorBox}>
-                  <Location name={""} width={150} height={150} displaySpeaker={false} includePlusSign={false} color={(Colors as any)[colorName]} textLocation={"OUTSIDE"}/>
-                </Pressable>
+                <OverlaidColorBlock 
+                  overlayActive={(selectedColorBlock === colorName)} 
+                  handleBlockClicked={() => handleColorBlockClicked(colorName)} 
+                  blockColor={(Colors as any)[colorName]} key={index}
+                  overlayColor={(Colors as any)[Contrasting_AvailableLocationColorNames[index]]}
+                />
+                // <Pressable key={colorName} style={styles.colorBox}>
+                //   <Location name={""} width={150} height={150} displaySpeaker={false} includePlusSign={false} color={(Colors as any)[colorName]} textLocation={"OUTSIDE"}/>
+                // </Pressable>
               )
             })}
           </ThemedView>
@@ -116,10 +133,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center", 
   },
-  colorBox: {
-    boxSizing: "content-box",
-    margin: "auto",  
-  }
+  
 })
 
 export default AddRouteScreen;

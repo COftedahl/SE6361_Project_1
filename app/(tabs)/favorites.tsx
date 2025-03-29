@@ -25,7 +25,7 @@ const FavoritesTab = () => {
             <ThemedText>
               Add New Route
             </ThemedText>
-            <Link href={ROUTE_DESTINATION}>
+            <Link href={"/addroute"}>
               <PlusSVGIcon width={20} height={20} strokeWidth={"8"}/>
             </Link>
           </>
