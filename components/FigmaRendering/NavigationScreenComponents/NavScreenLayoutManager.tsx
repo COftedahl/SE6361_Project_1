@@ -4,10 +4,12 @@ import { ThemedView } from "../ThemedView";
 import { Pressable, StyleSheet } from 'react-native';
 import { Colors } from "@/constants/Colors";
 import XSVGIcon from "../svg/XIcon";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import CheckmarkSVGIcon from "../svg/Checkmark";
 import { useRouter } from "expo-router";
 import { PreNavigateToTabs } from "@/constants/Functionality";
+import HelpSVGIcon from "../svg/Help";
+import HelpModalScreen from "../HelpModalScreen";
 
 interface NavScreenLayoutManagerProps {
   topButtons?: ReactNode,
@@ -19,28 +21,45 @@ const NavScreenLayoutManager = (props: NavScreenLayoutManagerProps) => {
   const SVGIconDimensions = 40;
 
   const router = useRouter();
+  const [showHelpScreen, setShowHelpScreen] = useState<boolean>(false);
 
   const handleXClicked = () => {
     PreNavigateToTabs(router);
     router.navigate("/");
   }
 
+  const handleHelpClicked = () => {
+    console.log("Help was clicked");
+    setShowHelpScreen(true);
+    console.log(showHelpScreen);
+  }
+
+  const handleClosePopup = () => {
+    setShowHelpScreen(false);
+  }
+
   return (
     <ThemedView style={styles.screenContainer}>
       <Header pageTitle={"Navigation"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>
-      <ThemedView style={styles.contentDiv}>
-        <ThemedView style={styles.topButtonsDiv}>
-          <Pressable onPress={handleXClicked}>
-            <XSVGIcon width={SVGIconDimensions} height={SVGIconDimensions} strokeWidth={"10"}/>
-          </Pressable>
-          <ThemedView style={styles.topButtonsDiv_Right}>
-            {props.topButtons}
+      <ThemedView style={styles.contentDivNoPadding}>
+        <ThemedView style={styles.contentDiv}>
+          <ThemedView style={styles.topButtonsDiv}>
+            <Pressable onPress={handleXClicked}>
+              <XSVGIcon width={SVGIconDimensions} height={SVGIconDimensions} strokeWidth={"10"}/>
+            </Pressable>
+            <ThemedView style={styles.topButtonsDiv_Right}>
+              {props.topButtons}
+            </ThemedView>
           </ThemedView>
+          {props.children}
         </ThemedView>
-        {props.children}
+        {showHelpScreen && <HelpModalScreen closePopup={handleClosePopup}/>}
       </ThemedView>
+      
       <ThemedView style={styles.helpButtonDiv}>
-        <CheckmarkSVGIcon width={SVGIconDimensions} height={SVGIconDimensions}/>
+        <Pressable onPress={handleHelpClicked}>
+          <HelpSVGIcon width={SVGIconDimensions} height={SVGIconDimensions} strokeWidth={"6"}/>
+        </Pressable>
       </ThemedView>
     </ThemedView>  
   )
@@ -53,6 +72,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start", 
     height: "100%", 
   },
+  contentDivNoPadding: {
+    flexGrow: 1,
+    position: "relative", 
+  }, 
   contentDiv: {
     flexGrow: 1,
     borderWidth: sectionHorizontalPadding, 

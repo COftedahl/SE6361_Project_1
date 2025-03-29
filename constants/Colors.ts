@@ -47,4 +47,5 @@ export const Colors = {
   white: "#FFFFFF", 
   palegrey: "#F5F5F5",
   transparent: "#00000000",
+  transparentgrey: "#00000040"
 };
