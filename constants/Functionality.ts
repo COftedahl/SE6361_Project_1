@@ -1,7 +1,7 @@
-import { RelativePathString } from "expo-router";
+import { ExternalPathString, RelativePathString } from "expo-router";
 
-export const ROUTE_DESTINATION: RelativePathString = "./settings";
-export const CHOOSE_ROUTE_DESTINATION: RelativePathString = "./favorites";
+export const ROUTE_DESTINATION: ExternalPathString = "/navigation" as ExternalPathString;
+export const CHOOSE_ROUTE_DESTINATION: ExternalPathString = "/navigation/chooseroute" as ExternalPathString;
 
 export const PreNavigateToTabs = (router: any) => {
   router.dismissAll();

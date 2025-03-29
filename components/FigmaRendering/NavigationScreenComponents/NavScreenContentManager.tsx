@@ -19,12 +19,12 @@ interface Props {
 const NavScreenContentManager = (props: Props) => {
 
   return (
-    <>
-    <ThemedView style={styles.destinationTitleDiv}>
-      <ThemedText style={styles.destinationTitle_Text}>
-        {props.destinationText}
-      </ThemedText>
-    </ThemedView>
+    <ThemedView style={styles.contentScreenWrapper}>
+      <ThemedView style={styles.destinationTitleDiv}>
+        <ThemedText style={styles.destinationTitle_Text}>
+          {props.destinationText}
+        </ThemedText>
+      </ThemedView>
       {(props.instructions && props.instructions.showInstructions && props.instructions.showInstructions === true) && 
         <ThemedView style={styles.instructionsDiv}>
           <ThemedText style={styles.instructions_majorText}>
@@ -40,22 +40,33 @@ const NavScreenContentManager = (props: Props) => {
       <ThemedView style={styles.mapDiv}>
         {props.children}
       </ThemedView>
-    </>
+    </ThemedView>
   )
 }
 
 const styles = StyleSheet.create({
+  contentScreenWrapper: {
+    width: "100%", 
+    height: "100%", 
+    display: "flex", 
+    flexDirection: "column", 
+    justifyContent: "center", 
+    alignItems: "center", 
+  }, 
   destinationTitleDiv: {
-    height: 55,
+    // height: 55,
+    marginBottom: 25,
     display: "flex", 
     flexDirection: "column", 
     justifyContent: "flex-start", 
     alignItems: "center", 
+    width: "60%",
   }, 
   destinationTitle_Text: {
     fontWeight: 700, 
     fontSize: 2 * BaseFontSize, 
     margin: 8,
+    textAlign: "center", 
   }, 
   instructionsDiv: {
     display: "flex", 
@@ -65,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center", 
     borderRadius: inputBorderRadius, 
     backgroundColor: Colors.lightgrey, 
+    width: "100%", 
   }, 
   instructions_majorText: {
     fontWeight: 600, 
@@ -82,6 +94,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.black, 
     marginTop: 10,
     backgroundColor: Colors.palegrey,
+    width: "100%", 
   }, 
 })
 

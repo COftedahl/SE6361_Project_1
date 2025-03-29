@@ -6,6 +6,8 @@ import SpeakerSVGIcon from "../svg/Speaker";
 import StrideSVGIcon from "../svg/Stride";
 import { standardBorderRadius } from "@/constants/Styles";
 import { Colors } from "@/constants/Colors";
+import { useRouter } from "expo-router";
+import { PreNavigateToTabs, ROUTE_DESTINATION } from "@/constants/Functionality";
 
 interface Props {
   pageTitle: string, 
@@ -15,18 +17,31 @@ interface Props {
 }
 
 const Header = (props: Props) => {
+
+  const router = useRouter();
+
+  const handleStrideClicked = () => {
+    PreNavigateToTabs(router);
+    router.navigate("/navigation/stridelength");
+  }
+
+  const handleNavigationClicked = () => {
+    PreNavigateToTabs(router);
+    router.navigate("/navigation/obstaclesonly");    
+  }
+
   return (
     <ThemedView style={styles.headerDiv}>
       <ThemedText style={styles.headerText} type="title">{props.pageTitle}</ThemedText>
       <ThemedView style={styles.headerButtonDiv}>
         {props.displayStrideLengthButton ? 
-          <Pressable style={[styles.headerButton, styles.headerButton_Stride]}>
+          <Pressable style={[styles.headerButton, styles.headerButton_Stride]} onPress={handleStrideClicked}>
             {/* <ThemedText>[Place Stride Icon Here]</ThemedText> */}
             <StrideSVGIcon width={50} height={50} backgroundColor={styles.headerButton_Stride.backgroundColor}/>
           </Pressable>
         : <></>}
         {props.displayCameraButton ? 
-          <Pressable style={[styles.headerButton, styles.headerButton_Camera]}>
+          <Pressable style={[styles.headerButton, styles.headerButton_Camera]} onPress={handleNavigationClicked}>
             {/* <ThemedText>[Place Camera Icon Here]</ThemedText> */}
             <CameraSVGIcon width={50} height={50} backgroundColor={styles.headerButton_Camera.backgroundColor} viewBoxScale={1.2}/>
           </Pressable>

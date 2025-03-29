@@ -166,7 +166,11 @@ export const InnerLocationContent = (props: LocationProps) => {
               :
                 <></>
               }
-              <SpeakerSVGIcon width={40} height={40} viewBoxScale={0.8}/>
+              {props.displaySpeaker === undefined || props.displaySpeaker === true ? 
+                <SpeakerSVGIcon width={40} height={40} viewBoxScale={0.8}/>
+                :
+                <></>
+              }
             </ThemedView>
           </>
         :
@@ -177,7 +181,11 @@ export const InnerLocationContent = (props: LocationProps) => {
       ?
         <>
           <ThemedView style={styles.outerDivStyles}>
-            <SpeakerSVGIcon width={50} height={40} viewBoxScale={0.8}/>
+            {props.displaySpeaker === undefined || props.displaySpeaker === true ? 
+              <SpeakerSVGIcon width={50} height={40} viewBoxScale={0.8}/>
+              :
+              <></>
+            }
             <ThemedText 
               style={
                 [
