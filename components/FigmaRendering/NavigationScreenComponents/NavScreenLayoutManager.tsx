@@ -29,9 +29,7 @@ const NavScreenLayoutManager = (props: NavScreenLayoutManagerProps) => {
   }
 
   const handleHelpClicked = () => {
-    console.log("Help was clicked");
     setShowHelpScreen(true);
-    console.log(showHelpScreen);
   }
 
   const handleClosePopup = () => {

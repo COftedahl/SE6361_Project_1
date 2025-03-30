@@ -24,10 +24,12 @@ const AddRouteScreen = () => {
 
   const handleClosePressed = () => {
     PreNavigateToTabs(router);
+    router.navigate("/recents");
   }
 
   const handleConfirmPressed = () => {
     PreNavigateToTabs(router);
+    router.navigate("/recents");
   }
 
   const handleColorBlockClicked = (color: string) => {
