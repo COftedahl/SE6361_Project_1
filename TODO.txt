@@ -1,2 +1,2 @@
 -Design Idea for homepage: divide into more sections vertically, each section use a horizontal scroller to view the routes for the section
--Add in way to access outlet detection screen (need icon on obstaclesonly screen)
+-Make the searchbars and filters functional

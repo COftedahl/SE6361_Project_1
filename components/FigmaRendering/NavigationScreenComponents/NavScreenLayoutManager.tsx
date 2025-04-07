@@ -12,7 +12,6 @@ import HelpSVGIcon from "../svg/Help";
 import HelpModalScreen from "../HelpModalScreen";
 
 interface NavScreenLayoutManagerProps {
-  topButtons?: ReactNode,
   children?: ReactNode,
 }
 
@@ -20,13 +19,7 @@ const NavScreenLayoutManager = (props: NavScreenLayoutManagerProps) => {
 
   const SVGIconDimensions = 40;
 
-  const router = useRouter();
   const [showHelpScreen, setShowHelpScreen] = useState<boolean>(false);
-
-  const handleXClicked = () => {
-    PreNavigateToTabs(router);
-    router.navigate("/");
-  }
 
   const handleHelpClicked = () => {
     setShowHelpScreen(true);
@@ -41,14 +34,6 @@ const NavScreenLayoutManager = (props: NavScreenLayoutManagerProps) => {
       <Header pageTitle={"Navigation"} displayStrideLengthButton={false} displayCameraButton={false} displayReadScreenButton={true}/>
       <ThemedView style={styles.contentDivNoPadding}>
         <ThemedView style={styles.contentDiv}>
-          <ThemedView style={styles.topButtonsDiv}>
-            <Pressable onPress={handleXClicked}>
-              <XSVGIcon width={SVGIconDimensions} height={SVGIconDimensions} strokeWidth={"10"}/>
-            </Pressable>
-            <ThemedView style={styles.topButtonsDiv_Right}>
-              {props.topButtons}
-            </ThemedView>
-          </ThemedView>
           {props.children}
         </ThemedView>
         {showHelpScreen && <HelpModalScreen closePopup={handleClosePopup}/>}
@@ -79,22 +64,6 @@ const styles = StyleSheet.create({
     borderWidth: sectionHorizontalPadding, 
     borderColor: Colors.white,
     position: "relative", 
-  }, 
-  topButtonsDiv: {
-    display: "flex", 
-    flexDirection: "row", 
-    justifyContent: "space-between",
-    width: "100%", 
-    marginBottom: 18,
-    position: "absolute", 
-    top: 0, 
-    zIndex: 1,
-    backgroundColor: Colors.transparent, 
-  }, 
-  topButtonsDiv_Right: {
-    display: "flex", 
-    flexDirection: "row", 
-    justifyContent: "flex-end", 
   }, 
   helpButtonDiv: {
     position: "absolute", 

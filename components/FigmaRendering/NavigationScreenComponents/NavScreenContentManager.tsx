@@ -3,8 +3,11 @@ import { ThemedView } from "../ThemedView";
 import { ThemedText } from "../ThemedText";
 import { inputBorderRadius, inputPadding } from "@/constants/Styles";
 import { Colors } from "@/constants/Colors";
-import { StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { BaseFontSize } from "@/constants/Font";
+import XSVGIcon from "../svg/XIcon";
+import { useRouter } from "expo-router";
+import { PreNavigateToTabs } from "@/constants/Functionality";
 
 interface Props {
   destinationText: string, 
@@ -14,12 +17,29 @@ interface Props {
       minorInstructions?: string, 
     }
     children?: ReactNode,
+    topButtons?: ReactNode,
 }
 
 const NavScreenContentManager = (props: Props) => {
 
+  const router = useRouter();
+  const SVGIconDimensions = 40;
+
+  const handleXClicked = () => {
+    PreNavigateToTabs(router);
+    router.navigate("/");
+  }
+
   return (
     <ThemedView style={styles.contentScreenWrapper}>
+      <ThemedView style={styles.topButtonsDiv}>
+        <Pressable onPress={handleXClicked}>
+          <XSVGIcon width={SVGIconDimensions} height={SVGIconDimensions} strokeWidth={"10"}/>
+        </Pressable>
+        <ThemedView style={styles.topButtonsDiv_Right}>
+          {props.topButtons}
+        </ThemedView>
+      </ThemedView>
       <ThemedView style={styles.destinationTitleDiv}>
         <ThemedText style={styles.destinationTitle_Text}>
           {props.destinationText}
@@ -52,6 +72,22 @@ const styles = StyleSheet.create({
     flexDirection: "column", 
     justifyContent: "center", 
     alignItems: "center", 
+  }, 
+  topButtonsDiv: {
+    display: "flex", 
+    flexDirection: "row", 
+    justifyContent: "space-between",
+    width: "100%", 
+    marginBottom: 18,
+    position: "absolute", 
+    top: 0, 
+    zIndex: 1,
+    backgroundColor: Colors.transparent, 
+  }, 
+  topButtonsDiv_Right: {
+    display: "flex", 
+    flexDirection: "row", 
+    justifyContent: "flex-end", 
   }, 
   destinationTitleDiv: {
     // height: 55,
